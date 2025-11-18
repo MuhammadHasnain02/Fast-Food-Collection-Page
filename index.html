@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fast Food Collection Page</title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="Screenshot 2025-08-02 123534.png" type="image/x-icon">
+    
+    <!-- Font Awesome Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+    
+    <!-- Tailwind Css -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Google Font Links -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
+</head>
+
+<body class="min-h-screen flex flex-col bg-gray-100">
+    
+    <!-- Navbar -->
+    <nav class="navbar fixed top-0 left-0 w-full z-10 font-[Montserrat]">
+
+        <!-- Top Nav -->
+        <div class="mainNavDiv flex flex-row justify-end gap-10 pr-12 py-3.5 bg-[#556155]">
+
+            <div class="space-x-5">
+                <a href="#" class="text-[15px] text-gray-200 hover:underline">Home</a>
+                <a href="#" class="text-[15px] text-gray-200 hover:underline">Top Products</a>
+                <a href="#" class="text-[15px] text-gray-200 hover:underline">Cities</a>
+                <a href="#" class="text-[15px] text-gray-200 hover:underline">About</a>
+            </div>
+            <div class="flex flex-row items-center font-[Montserrat] hover:cursor-pointer">
+                <i class="fa-regular fa-circle-user text-gray-300 text-[16px] pr-6"></i>
+                <a href="#" class="text-[13px] text-gray-200 hover:underline pr-2 border-r-1">LOGIN</a>
+                <a href="#" class="text-[13px] text-gray-200 hover:underline pl-2">REGISTER</a>
+            </div>
+
+        </div>
+
+        <!-- Search Nav -->
+        <div class="navSearchDiv flex flex-row justify-evenly py-5 bg-gray-100">
+
+            <div class="mainLogoDiv flex items-center transition-transform duration-500 hover:cursor-pointer hover:scale-105">
+                <a href="index.html"><i class="navLogo fa-solid fa-utensils text-[26px]" style="color: #556155;"></i></a>
+                <p class="navLogoTxt pl-2 font-semibold tracking-tight text-[22px]">FOOD</p>
+            </div>
+            <div class="text-center navInp">
+                <input id="searchBox" type="search" placeholder="Search products..." 
+                class="shadow-md rounded-3xl w-[650px] p-[10px] pl-5 font-sans bg-[#e7e7e7] outline-gray-400">
+            </div>
+            <div class="flex flex-row items-center justify-end hover:cursor-pointer">
+                <i class="navCartIcon fa-solid fa-cart-shopping text-[25px]" style="color: #556155;"></i>
+            </div>
+
+        </div>
+        
+    </nav>
+
+    <!-- Collection Section -->
+    <div class="mainAllSecDiv hidden grid grid-cols-12 gap-3 mt-42">
+
+        <!-- Left Section -->
+        <div class="leftSecMainDiv sticky top-42 col-span-2 border h-130 py-2 rounded-xl border-gray-300 bg-gray-50 font-[Montserrat]">
+        
+            <div class="text-black px-4 py-2 border-b border-gray-300" id="categCards">
+                <h3 class="py-2 font-semibold">Category Filter</h3>
+            </div>
+
+            <div class="pricRangCardsDiv text-black px-4 py-5 border-b border-gray-300">
+
+                <h3 class="font-semibold">Pricing Filter</h3>
+                <div class="pt-2 rangSlidDiv">
+                    <input type="range" class="w-full" id="priceSlider">
+                </div>
+                <div class="flex justify-between rangSlidTxtDiv">
+                    <p id="minValue" class="font-medium">--</p>
+                    <p id="maxValue" class="font-medium">--</p>
+                </div>
+
+            </div>
+
+            <div class="ratCardsDiv text-black px-4 py-4">
+
+                <h3 class="text-[17px] font-semibold mb-1">Rating Filter</h3>
+                <div class="flex flex-col" id="ratingCards"></div>
+
+            </div>
+
+        </div>
+
+        <!-- Right Section -->
+        <div class="righSecMainDiv col-span-10 mb-2">
+
+            <!-- Top Bar -->
+            <div class="TopFiltDiv grid grid-cols-12">
+
+                <!-- All Funtionality Small Cards -->
+                <div class="filtChipsDiv col-span-8 flex items-end font-[Montserrat]">
+
+                    <div><p class="font-semibold text-[18px]">Filter By :</p></div>
+                    <div class="flex flex-row" id="allCategFiltLine"></div>
+                    <div class="flex flex-row" id="allRatFiltLine"></div>
+                    <div class="flex flex-row" id="allRangFiltLine"></div>
+                    <div class="flex flex-row" id="clearAllBtnDiv"></div>
+                    
+                </div>
+
+                <div class="dropdownsDiv flex col-span-4 items-end">
+
+                    <!-- Page Set Dropdown -->
+                    <div class="pgStDrpdwnDiv flex justify-center mr-2 font-[Montserrat]">
+                        <p class="font-semibold text-[14px] pr-2 flex items-center">ITEMS PER PAGE</p>
+                        <select id="itmPrPgDropdown" class="bg-white border-[2px] rounded-md w-16 h-11 text-center font-semibold hover:cursor-pointer">
+                            <option value="15">15</option>
+                            <option value="12">12</option>
+                            <option value="9" >9</option>
+                            <option value="6" >6</option>
+                            <option value="3" >3</option>
+                        </select>
+                    </div>
+
+                    <!-- Sort Dropdown -->
+                    <div class="sortDrpdwnDiv flex justify-center mr-6">
+                        <select id="sortDropdown" class="bg-white border-[2px] rounded-md w-42 h-11 text-center font-semibold hover:cursor-pointer">
+                            <option class="" selected disabled>SELECT SORTING</option>
+                            <option value="ratLowToHigh">Rating Low to High</option>
+                            <option value="ratHighToLow">Rating High to Low</option>
+                            <option value="pricLowToHigh">Price Low to High</option>
+                            <option value="pricHighToLow">Price High to Low</option>
+                        </select>
+                    </div>
+                    
+                </div>
+                
+            </div>
+
+            <hr class="mb-4">
+
+            <!-- Cards -->
+            <div class="grid grid-cols-12 gap-3 mx-8" id="prodCards"></div>
+
+            <!-- Pagination Buttons -->
+            <div class="flex justify-center my-8">
+                <div class="paginMainDiv text-gray-500 gap-5 border border-gray-300 rounded-md px-3 flex flex-row justify-center items-center">
+                    <div id="pagination" class="flex justify-center"></div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ================= FOOTER ================= -->
+    <footer id="footer" class="mt-auto text-gray-300 pt-12 pb-7 bg-[#556155]">
+
+        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-8">
+
+            <!-- logo and Headline -->
+            <div class="space-y-2">
+                <div class="flex items-center space-x-2">
+                    <i class="navLogo fa-solid fa-utensils text-[22px]"></i>
+                    <h3 class="text-xl font-bold tracking-wide">FastFood</h3>
+                </div>
+                <div>
+                    <p>Fastest food delivery service in your city.</p>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-xl font-bold mb-3">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="#home" class="hover:underline">Home</a></li>
+                    <li><a href="#topProducts" class="hover:underline">Top Products</a></li>
+                    <li><a href="#countries" class="hover:underline">Cities</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Links -->
+            <div class="space-y-2">
+                <h3 class="text-xl font-bold mb-3">Contact</h3>
+                <div class="flex items-center space-x-2">
+                    <i class="fa-regular fa-envelope text-[17px]"></i>
+                    <p class="font-semibold tracking-wide">support@FastFood.com</p>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <i class="fa-solid fa-phone text-[16px]"></i>
+                    <p class="font-semibold tracking-wide">+92 300-222-333-4</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="max-w-7xl mx-auto flex items-center justify-between mt-10 px-4">
+
+            <!-- Left Side Copy -->
+            <p class="text-gray-300">© 2025 FastFood — All rights reserved</p>
+
+            <!-- Right Side Social Media -->
+            <div class="flex gap-4 text-xl">
+                <a href="#" class="hover:text-white"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#" class="hover:text-white"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="hover:text-white"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#" class="hover:text-white"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+
+        </div>
+        
+    </footer>
+
+</body>
+
+<script src="app.js"></script>
+</html>
