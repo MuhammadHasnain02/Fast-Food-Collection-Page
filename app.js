@@ -588,3 +588,51 @@ document.getElementById("searchBox").addEventListener("input", function () {
   currentPage = 1
   renderProducts(currentFilteredData)
 });
+
+// ======================= Navigation btn =======================
+
+let homeBtn = document.querySelectorAll(".homeBtn")
+let collectionBtn = document.querySelectorAll(".collectionBtn")
+let citiesBtn = document.querySelectorAll(".citiesBtn")
+let reviewsBtn = document.querySelectorAll(".reviewsBtn")
+let aboutBtn = document.querySelectorAll(".aboutBtn")
+
+homeBtn.forEach(btn => {
+  
+  btn.addEventListener("click" , () => {
+    document.getElementById("homeSect").scrollIntoView({ top: 0, behavior: "smooth" });
+  })
+
+})
+
+collectionBtn.forEach(btn => {
+  
+  btn.addEventListener("click" , () => {
+    document.getElementById("collectionPageSect").scrollIntoView({ top: 0, behavior: "smooth" });
+  })
+
+})
+
+citiesBtn.forEach(btn => {
+  
+  btn.addEventListener("click" , () => {
+    document.getElementById("cityCardSect").scrollIntoView({ top: 0, behavior: "smooth" });
+  })
+
+})
+
+reviewsBtn.forEach(btn => {
+  
+  btn.addEventListener("click" , () => {
+    document.getElementById("reviewsCardSect").scrollIntoView({ top: 0, behavior: "smooth" });
+  })
+
+})
+
+aboutBtn.forEach(btn => {
+  
+  btn.addEventListener("click" , () => {
+    document.getElementById("aboutSect").scrollIntoView({ top: 0, behavior: "smooth" });
+  })
+
+})

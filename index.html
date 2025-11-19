@@ -59,12 +59,13 @@
         <!-- Top Nav -->
         <div class="mainNavDiv flex flex-row justify-end gap-10 pr-12 py-3.5 bg-[#556155]">
 
-            <div class="space-x-5">
-                <a href="#" class="text-[15px] text-gray-200 hover:underline">Home</a>
-                <a href="#" class="text-[15px] text-gray-200 hover:underline">Top Products</a>
-                <a href="#" class="text-[15px] text-gray-200 hover:underline">Cities</a>
-                <a href="#" class="text-[15px] text-gray-200 hover:underline">About</a>
-            </div>
+            <ul class="flex space-x-5">
+                <li class="homeBtn text-[15px] text-gray-200 hover:underline hover:cursor-pointer">Home</li>
+                <li class="collectionBtn text-[15px] text-gray-200 hover:underline hover:cursor-pointer">Collection</li>
+                <li class="citiesBtn text-[15px] text-gray-200 hover:underline hover:cursor-pointer">Cities</li>
+                <li class="reviewsBtn text-[15px] text-gray-200 hover:underline hover:cursor-pointer">Reviews</li>
+                <li class="aboutBtn text-[15px] text-gray-200 hover:underline hover:cursor-pointer">About</li>
+            </ul>
             <div class="flex flex-row items-center font-[Montserrat] hover:cursor-pointer">
                 <i class="fa-regular fa-circle-user text-gray-300 text-[16px] pr-6"></i>
                 <a href="#" class="text-[13px] text-gray-200 hover:underline pr-2 border-r-1">LOGIN</a>
@@ -94,7 +95,7 @@
 
     <!-- ================= Middele Section ================= -->
 
-    <section class="mx-32 mt-50 mb-35">
+    <section id="homeSect" class="mx-32 mt-50 mb-35">
 
         <!-- ================= Hero Section ================= -->
         <section class="w-full h-100 bg-[url('/Images/banner.png')] bg-cover bg-center rounded-xl mx-auto shadow-lg"></section>
@@ -103,7 +104,7 @@
 
         <!-- ================= Collection Section ================= -->
     
-        <div class="mainAllSecDiv -mx-32 grid grid-cols-12 gap-3 mt-20">
+        <div id="collectionPageSect" class="mainAllSecDiv -mx-32 grid grid-cols-12 gap-3 mt-20">
     
             <!-- Left Section -->
             <div class="leftSecMainDiv sticky top-42 col-span-2 border h-130 py-2 rounded-xl border-gray-300 bg-gray-50 font-[Montserrat]">
@@ -417,7 +418,7 @@
 
     <!-- ================= FOOTER ================= -->
 
-    <footer id="footer" class="mt-auto text-gray-300 pt-12 pb-7 bg-[#556155]">
+    <footer id="aboutSect" class="mt-auto text-gray-300 pt-12 pb-7 bg-[#556155]">
 
         <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-8">
 
@@ -436,9 +437,11 @@
             <div>
                 <h3 class="text-xl font-bold mb-3">Quick Links</h3>
                 <ul class="space-y-2">
-                    <li><a href="#home" class="hover:underline">Home</a></li>
-                    <li><a href="#topProducts" class="hover:underline">Top Products</a></li>
-                    <li><a href="#countries" class="hover:underline">Cities</a></li>
+                    <li class="homeBtn hover:underline hover:cursor-pointer">Home</li>
+                    <li class="collectionBtn hover:underline hover:cursor-pointer">Collection</li>
+                    <li class="citiesBtn hover:underline hover:cursor-pointer">Cities</li>
+                    <li class="reviewsBtn hover:underline hover:cursor-pointer">Reviews</li>
+                    <li class="aboutBtn hover:underline hover:cursor-pointer">About</li>
                 </ul>
             </div>
 
