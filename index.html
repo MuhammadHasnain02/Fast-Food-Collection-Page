@@ -95,36 +95,97 @@
 
     <!-- ================= Middele Section ================= -->
 
-    <section class="mx-32 mt-50 mb-35">
+    <section class="px-4 sm:px-6 md:px-32 lg:px-32 xl:px-32 2xl:px-36 mt-50 mb-35">
 
         <!-- ================= Hero Section ================= -->
-        <section class="w-full h-100 bg-[url('/Images/banner.png')] bg-cover bg-center rounded-xl mx-auto shadow-lg"></section>
+        <section class="w-auto h-100 sm:h-110 md:h-70 lg:h-90 xl:h-110 bg-[url('/Images/banner.png')] bg-cover bg-no-repeat bg-center rounded-xl mx-auto shadow-lg"></section>
 
         <hr id="collectionPageSect" class="my-20 text-gray-300">
 
+        <!-- ================= Top Chips Bar ================= -->
+
+        <div class="TopFiltDiv -mx-32 grid grid-cols-12 text-gray-200 bg-[#556155] 
+            px-6 py-4.5 shadow-[0_4px_16px_rgba(0,0,0,0.06)]">
+
+            <!-- Left Chips Area -->
+            <div class="filtChipsDiv col-span-9 flex items-center font-[Montserrat]">
+
+                <div class="flex flex-row items-center text-[17px] space-x-2 pr-2">
+                    <i class="fa-solid fa-bars text-[18px]"></i>
+                    <p class="font-semibold tracking-tight">Filters Applied →</p>
+                </div>
+
+                <!-- Chips sections -->
+                <div class="flex" id="allCategFiltLine"></div>
+                <div class="flex" id="allRatFiltLine"></div>
+                <div class="flex" id="allRangFiltLine"></div>
+
+                <!-- Clear All -->
+                <div id="clearAllBtnDiv" class="ml-1"></div>
+
+            </div>
+
+            <!-- Right Dropdowns -->
+            <div class="dropdownsDiv col-span-3 flex justify-end items-center gap-4">
+
+                <!-- Items Per Page -->
+                <div class="pgStDrpdwnDiv flex items-center gap-2 font-[Montserrat]">
+
+                    <p class="font-semibold text-[14px] uppercase">Items</p>
+                    <select id="itmPrPgDropdown" class="border-2 border-gray-300 bg-[#556155] rounded-xl px-3 h-10 min-w-20 text-center font-medium hover:cursor-pointer transition-all duration-200 focus:ring-2 focus:ring-white">
+                        <option value="15">15</option>
+                        <option value="12">12</option>
+                        <option value="9">9</option>
+                        <option value="6">6</option>
+                        <option value="3">3</option>
+                    </select>
+
+                </div>
+
+                <!-- Sorting Dropdown -->
+                <div class="sortDrpdwnDiv flex items-center">
+
+                    <select id="sortDropdown" class="border-2 border-gray-300 bg-[#556155] rounded-xl px-4 h-10 w-48 text-center font-medium hover:cursor-pointer transition-all duration-200 focus:ring-2 focus:ring-white">
+                        <option disabled selected>Sort Options</option>
+                        <option value="ratLowToHigh">Rating Low → High</option>
+                        <option value="ratHighToLow">Rating High → Low</option>
+                        <option value="pricLowToHigh">Price Low → High</option>
+                        <option value="pricHighToLow">Price High → Low</option>
+                    </select>
+
+                </div>
+
+            </div>
+
+        </div>
+
         <!-- ================= Collection Section ================= -->
     
-        <div class="mainAllSecDiv -mx-32 grid grid-cols-12 gap-3 mt-20">
+        <div class="mainAllSecDiv -mx-32 grid grid-cols-12 gap-3 mt-10">
     
             <!-- Left Section -->
-            <div class="leftSecMainDiv sticky top-42 col-span-2 border h-130 py-2 rounded-xl border-gray-300 bg-gray-50 font-[Montserrat]">
-            
+            <div class="leftSecMainDiv sticky top-38 col-span-2 border h-144 py-2 rounded-xl border-gray-200 bg-gray-50 font-[Montserrat]">
+
                 <div class="text-black px-4 py-2 border-b border-gray-300" id="categCards">
-                    <h3 class="py-2 font-semibold">Category Filter</h3>
+                    <h3 class="text-gray-600 text-[17px] font-bold py-2">Cuisines</h3>
                 </div>
     
                 <div class="pricRangCardsDiv text-black px-4 py-5 border-b border-gray-300">
-    
-                    <h3 class="font-semibold">Pricing Filter</h3>
+
+                    <h3 class="font-semibold mb-2">Pricing Filter</h3>
+
+                    <!-- Modern Slider -->
                     <div class="pt-2 rangSlidDiv">
-                        <input type="range" class="w-full" id="priceSlider">
+                        <input type="range" id="priceSlider" class="w-full appearance-none h-2 rounded-full bg-gray-200 accent-[#556155] cursor-pointer sliderStyled">
                     </div>
-                    <div class="flex justify-between rangSlidTxtDiv">
+
+                    <div class="flex justify-between text-[15px] rangSlidTxtDiv mt-2">
                         <p id="minValue" class="font-medium">--</p>
                         <p id="maxValue" class="font-medium">--</p>
                     </div>
-    
+
                 </div>
+
     
                 <div class="ratCardsDiv text-black px-4 py-4">
     
@@ -138,53 +199,8 @@
             <!-- Right Section -->
             <div class="righSecMainDiv col-span-10 mb-2">
     
-                <!-- Top Bar -->
-                <div class="TopFiltDiv grid grid-cols-12">
-    
-                    <!-- All Funtionality Small Cards -->
-                    <div class="filtChipsDiv col-span-8 flex items-end font-[Montserrat]">
-    
-                        <div><p class="font-semibold text-[18px]">Filter By :</p></div>
-                        <div class="flex flex-row" id="allCategFiltLine"></div>
-                        <div class="flex flex-row" id="allRatFiltLine"></div>
-                        <div class="flex flex-row" id="allRangFiltLine"></div>
-                        <div class="flex flex-row" id="clearAllBtnDiv"></div>
-                        
-                    </div>
-    
-                    <div class="dropdownsDiv flex col-span-4 items-end">
-    
-                        <!-- Page Set Dropdown -->
-                        <div class="pgStDrpdwnDiv flex justify-center mr-2 font-[Montserrat]">
-                            <p class="font-semibold text-[14px] pr-2 flex items-center">ITEMS PER PAGE</p>
-                            <select id="itmPrPgDropdown" class="bg-white border-[2px] rounded-md w-16 h-11 text-center font-semibold hover:cursor-pointer">
-                                <option value="15">15</option>
-                                <option value="12">12</option>
-                                <option value="9" >9</option>
-                                <option value="6" >6</option>
-                                <option value="3" >3</option>
-                            </select>
-                        </div>
-    
-                        <!-- Sort Dropdown -->
-                        <div class="sortDrpdwnDiv flex justify-center mr-6">
-                            <select id="sortDropdown" class="bg-white border-[2px] rounded-md w-42 h-11 text-center font-semibold hover:cursor-pointer">
-                                <option class="" selected disabled>SELECT SORTING</option>
-                                <option value="ratLowToHigh">Rating Low to High</option>
-                                <option value="ratHighToLow">Rating High to Low</option>
-                                <option value="pricLowToHigh">Price Low to High</option>
-                                <option value="pricHighToLow">Price High to Low</option>
-                            </select>
-                        </div>
-                        
-                    </div>
-                    
-                </div>
-    
-                <hr class="mb-4">
-    
                 <!-- Cards -->
-                <div class="grid grid-cols-12 gap-3 mx-8" id="prodCards"></div>
+                <div class="grid grid-cols-12 gap-4 mx-8" id="prodCards"></div>
     
                 <!-- Pagination Buttons -->
                 <div class="flex justify-center my-8">
@@ -204,7 +220,7 @@
         <section class="max-w-[1260px]">
             <h2 class="fade-in text-2xl font-bold mb-6 text-gray-800">Available Cities</h2>
     
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 ">
     
                 <!-- City 1: Karachi -->
                 <div class="fade-in bg-white/70 backdrop-blur-lg shadow-xl rounded-2xl border border-white/40 hover:scale-[1.02] transition-all duration-400 cursor-pointer overflow-hidden">
@@ -213,7 +229,7 @@
                     <img src="Images/karachi.jfif" alt="Karachi skyline" class="w-full h-45 object-cover">
                     
                     <!-- body -->
-                    <div class="p-6 pb-9 flex flex-col justify-between">
+                    <div class="p-6 pb-9 flex flex-col h-auto justify-between">
                         
                         <div>
                             <div class="flex items-center gap-3">
@@ -228,7 +244,7 @@
                             </p>
                         </div>
     
-                        <div class="mt-6">
+                        <div class="mt-12">
                             <div class="flex items-center justify-between">
                                 <span class="text-green-600 font-semibold">✔ Delivery Available</span>
                                 <span class="text-gray-500 text-sm">30+ restaurants</span>
@@ -466,10 +482,10 @@
 
             <!-- Right Side Social Media -->
             <div class="flex gap-4 text-xl">
-                <a href="#" class="hover:text-white"><i class="fa-brands fa-facebook"></i></a>
-                <a href="#" class="hover:text-white"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#" class="hover:text-white"><i class="fa-brands fa-x-twitter"></i></a>
-                <a href="#" class="hover:text-white"><i class="fa-brands fa-youtube"></i></a>
+                <a target="_blank" href="https://www.facebook.com" class="hover:text-white"><i class="fa-brands fa-facebook"></i></a>
+                <a target="_blank" href="https://www.instagram.com" class="hover:text-white"><i class="fa-brands fa-instagram"></i></a>
+                <a target="_blank" href="https://x.com" class="hover:text-white"><i class="fa-brands fa-x-twitter"></i></a>
+                <a target="_blank" href="https://www.youtube.com" class="hover:text-white"><i class="fa-brands fa-youtube"></i></a>
             </div>
 
         </div>

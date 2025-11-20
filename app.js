@@ -7,7 +7,7 @@ let products = [
     image: "./Images/burger1.webp",
     title: "Burger 1",
     description:
-      "Juicy grilled patty layered with melted cheese, lettuce, tomatoes, special sauce ...",
+      "Juicy grilled patty layered with melted cheese,lettuce,tomatoes,special sauce ...",
     price: 499,
     category: "Burger",
     rating: 3,
@@ -46,7 +46,7 @@ let products = [
     image: "./Images/burger2.webp",
     title: "Burger 2",
     description:
-      "Juicy grilled patty layered with melted cheese, lettuce, tomatoes, special sauce ...",
+      "Juicy grilled patty layered with melted cheese,lettuce,tomatoes,special sauce ...",
     price: 599,
     category: "Burger",
     rating: 2,
@@ -85,7 +85,7 @@ let products = [
     image: "./Images/burger3.webp",
     title: "Burger 3",
     description:
-      "Juicy grilled patty layered with melted cheese, lettuce, tomatoes, special sauce ...",
+      "Juicy grilled patty layered with melted cheese,lettuce,tomatoes,special sauce ...",
     price: 699,
     category: "Burger",
     rating: 4,
@@ -124,7 +124,7 @@ let products = [
     image: "./Images/burger4.webp",
     title: "Burger 4",
     description:
-      "Juicy grilled patty layered with melted cheese, lettuce, tomatoes, special sauce ...",
+      "Juicy grilled patty layered with melted cheese,lettuce,tomatoes,special sauce ...",
     price: 799,
     category: "Burger",
     rating: 5,
@@ -205,10 +205,17 @@ function mapCategTxt() {
   let container = document.getElementById("categCards");
   categories.forEach(c => {
     container.innerHTML += `
-      <div class="flex flex-row space-y-3 font-medium text-[15px]">
-        <div><input type="checkbox" onchange="filterCategory('${c}', this.checked)" class="checkCateg w-4 h-4 hover:cursor-pointer"></div>
-        <label class="pl-2 hover:cursor-pointer">${c}</label>
-      </div>
+      <label class="flex items-center gap-3 py-2 px-3 rounded-xl hover:bg-gray-100 transition-all duration-200 font-medium text-[15px] cursor-pointer">
+
+        <input type="checkbox" onchange="filterCategory('${c}', this.checked)"class="peer hidden">
+        <!-- Custom Round Checkbox -->
+        <div class="w-5 h-5 rounded-full border-2 border-[#788a78] flex items-center justify-center peer-checked:bg-[#788a78] transition-all duration-200">
+            <i class="fa-solid fa-check text-white text-[10px] hidden peer-checked:block"></i>
+        </div>
+        <span class="text-gray-800 select-none">${c}</span>
+
+      </label>
+
     `;
   });
 
@@ -226,6 +233,7 @@ let filterCategory = (category , isChecked) => {
 
   if (isChecked) {
     if (!selectedCateg.includes(category)) selectedCateg.push(category);
+    document.getElementById("collectionPageSect").scrollIntoView({ top: 0, behavior: "smooth" });
   }
   else {
     selectedCateg = selectedCateg.filter(c => c !== category);
@@ -239,6 +247,7 @@ let filterCategory = (category , isChecked) => {
 
 function filterRating(rating) {
   selectedRat = selectedRat === rating ? null : rating;
+  document.getElementById("collectionPageSect").scrollIntoView({ top: 0, behavior: "smooth" });
   mapTopFiltRatCards();
   updateFilteredAndRender();
 }
@@ -254,7 +263,7 @@ let mapTopFiltCategCards = () => {
   selectedCateg.forEach((categ) => {
     allCategFiltLine.innerHTML +=
     `
-      <div class="categChip flex flex-row items-center py-[6px] px-1.5 ml-2 gap-1 border-[2px] rounded-2xl">
+      <div class="categChip flex flex-row items-center py-1.5 px-3 ml-2 gap-1.5 border-2 border-gray-300 rounded-2xl">
         <p class="text-[15px]">${categ}</p>
         <i class="fa-solid fa-circle-xmark hover:cursor-pointer" onclick="removeFiltCategOnTop('${categ}')"></i>
       </div>
@@ -322,7 +331,7 @@ let mapTopFiltRatCards = () => {
   if (selectedRat) {
     allRatFiltLine.innerHTML =
     `
-      <div class="ratChip flex flex-row items-center p-1.5 ml-4 gap-2 border-[2px] rounded-2xl">
+      <div class="ratChip flex flex-row items-center text-sm px-3 py-1.5 ml-4 gap-2 border-[2px] rounded-2xl">
         <p class="">Rating: ${selectedRat} ★</p>
         <i class="fa-solid fa-circle-xmark hover:cursor-pointer" onclick="removeFiltRatOnTop()"></i>
       </div>
@@ -359,13 +368,15 @@ slider.addEventListener("input", () => {
 
   allRangFiltLine.innerHTML = 
   `
-    <div class="rangChip flex flex-row items-center p-1.5 ml-4 gap-2 border-[2px] rounded-2xl">
+    <div class="rangChip flex flex-row items-center px-3 py-1.5 gap-2 border-[2px] rounded-2xl">
       <p class="font-medium"><b>Rs. </b>${priceRange.min} - ${selected}</p>
       <i class="fa-solid fa-circle-xmark hover:cursor-pointer" onclick="removeFiltRangOnTop()"></i>
     </div>
   `;
   mapClearBtn();
   updateFilteredAndRender();
+  document.getElementById("collectionPageSect").scrollIntoView({ top: 0, behavior: "smooth" });
+  
 });
 
 // ======================= Remove Filtered Range on top =======================
@@ -419,26 +430,28 @@ function renderProducts(filteredProducts) {
   paginated.forEach(prod => {
     prodCards.innerHTML +=
     `
-    <div class="prodCardsDiv col-span-4 border bg-white border-gray-300 rounded-2xl hover:cursor-pointer">
+    <div class="prodCardsDiv col-span-4 border bg-white border-gray-300 rounded-2xl hover:cursor-pointer transition-all duration-400 ease-in-out hover:scale-[1.01]">
 
       <div class="prodMainImg">
-        <img src="${prod.image}" class="object-cover rounded-t-2xl z-[1] opacity-90 hover:opacity-100 transition-opacity w-full h-[250px]">
+        <img src="${prod.image}" class="object-cover rounded-t-2xl z-[1] opacity-90 hover:opacity-100 transition-opacity w-full h-[220px]">
       </div>
-      <div class="cardAllTxtDiv bg-[#fff] text-black px-3 py-3 rounded-b-2xl">
-        <p class="prodMainTxt font-semibold text-[22px] font-[Montserrat]">${prod.title}</p>
-        <p class="prodRat text-yellow-400 text-[32px] h-9 flex flex-row gap-2 items-center">
+      <div class="cardAllTxtDiv bg-[#fff] text-black px-5.5 py-5 space-y-3 rounded-b-2xl">
+        
+        <p class="prodMainTxt font-bold text-[20px] text-gray-600 font-[Montserrat]">${prod.title}</p>
+        <p class="prodRat text-yellow-400 flex flex-row gap-1 items-center">
           ${
             Array(5).fill().map((_, i) => 
-              `<i class="fa-solid fa-star text-[14px] ${i < prod.rating ? "text-yellow-400" : "text-gray-300"}"></i>`
+              `<i class="fa-solid fa-star text-[12px] ${i < prod.rating ? "text-yellow-400" : "text-gray-300"}"></i>`
             ).join("")
           }
-          <span class="prodRatTxt text-black text-[15px] flex items-center mt-1">(${prod.rating})</span>
+          <span class="prodRatTxt text-black text-[14px] flex items-center">(${prod.rating})</span>
         </p>
-        <p class="prodDescrp pb-2 max-h-24 overflow-auto">${prod.description}</p>
-        <div class="prodPriCartDiv flex justify-between items-center">
-          <p class="prodPric text-[20px] hover:text-gray-400"><span class="font-semibold">Rs. </span>${prod.price}</p>
+        <p class="prodDescrp pb-2 max-h-24 text-[15px] overflow-auto">${prod.description}</p>
+        <div class="prodPriCartDiv flex justify-between items-center mt-5">
+          <p class="prodPric text-[19px] hover:text-gray-400"><span class="font-semibold text-[18px]">Rs. </span>${prod.price}</p>
           <p><i class="prodCartIcon fa-solid fa-cart-shopping text-[18px] text-black hover:text-gray-400"></i></p>
         </div>
+
       </div>
 
     </div>
@@ -466,7 +479,7 @@ function renderPaginationButtons(totalItems) {
   for (let i = 1; i <= totalPages; i++) {
     paginationContainer.innerHTML +=
     `
-    <button onclick="changePage(${i})" class="px-5 py-3 m-0 ${i === currentPage ? 'bg-gray-200' : ''} border rounded-md">
+    <button onclick="changePage(${i})" class="px-5 py-3 m-0 ${i === currentPage ? 'bg-gray-200' : ''} border rounded-md hover:cursor-pointer">
         ${i}
     </button>
     `
@@ -479,6 +492,7 @@ function renderPaginationButtons(totalItems) {
 function changePage(pageNum) {
   currentPage = pageNum;
   renderProducts(currentFilteredData);
+  document.getElementById("collectionPageSect").scrollIntoView({ top: 0, behavior: "smooth" });
 }
 
 // ======================= UPDATE FILTERED DATA (call this everywhere) =======================
@@ -501,7 +515,7 @@ function mapClearBtn() {
   if (categorySelected || rangeSelected || ratingSelected) {
     clearAllBtnDiv.innerHTML =
     `
-    <div onclick="clearAllFilt()" class="clearAllChip flex flex-row items-center px-3 py-[6px] ml-3 border-[2px] rounded-2xl hover:cursor-pointer">
+    <div onclick="clearAllFilt()" class="clearAllChip flex flex-row items-center px-3 py-1.5 ml-3 border-2 border-gray-300 rounded-2xl hover:cursor-pointer">
       <p class="text-[15px]">Clear All</p>
     </div>
     `
@@ -587,6 +601,8 @@ document.getElementById("searchBox").addEventListener("input", function () {
 
   currentPage = 1
   renderProducts(currentFilteredData)
+  document.getElementById("collectionPageSect").scrollIntoView({ top: 0, behavior: "smooth" });
+
 });
 
 // ======================= Navigation btn =======================
@@ -598,7 +614,7 @@ let reviewsBtn = document.querySelectorAll(".reviewsBtn")
 let aboutBtn = document.querySelectorAll(".aboutBtn")
 
 homeBtn.forEach(btn => {
-  
+
   btn.addEventListener("click" , () => {
     document.getElementById("homeSect").scrollIntoView({ top: 0, behavior: "smooth" });
   })

@@ -11,6 +11,48 @@
     font-weight: 500;
 }
 
+/* Track */
+#priceSlider::-webkit-slider-runnable-track {
+    height: 6px;
+    background: #94ab94; /* light pink track */
+    border-radius: 10px;
+}
+
+/* Thumb */
+#priceSlider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 18px;
+    width: 18px;
+    background: #556155; /* strong pink */
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: -6px;
+    transition: 0.2s ease;
+}
+
+/* Thumb on active drag */
+#priceSlider:active::-webkit-slider-thumb {
+    transform: scale(1.2);
+    box-shadow: 0 0 10px #556155;
+}
+
+/* Mozilla Firefox */
+#priceSlider::-moz-range-thumb {
+    height: 18px;
+    width: 18px;
+    background: #556155;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#priceSlider::-moz-range-track {
+    height: 6px;
+    background: #98b098;
+    border-radius: 10px;
+}
+
+
 /* Screen Size 1400px */
 @media (max-width: 1660px) {}
 
