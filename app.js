@@ -207,7 +207,7 @@ function mapCategTxt() {
     container.innerHTML += `
       <label class="flex items-center gap-3 py-2 px-3 rounded-xl hover:bg-gray-100 transition-all duration-200 font-medium text-[15px] cursor-pointer">
 
-        <input type="checkbox" onchange="filterCategory('${c}', this.checked)"class="peer hidden">
+        <input type="checkbox" onchange="filterCategory('${c}', this.checked)"class="peer checkCateg hidden">
         <!-- Custom Round Checkbox -->
         <div class="w-5 h-5 rounded-full border-2 border-[#788a78] flex items-center justify-center peer-checked:bg-[#788a78] transition-all duration-200">
             <i class="fa-solid fa-check text-white text-[10px] hidden peer-checked:block"></i>
@@ -215,7 +215,6 @@ function mapCategTxt() {
         <span class="text-gray-800 select-none">${c}</span>
 
       </label>
-
     `;
   });
 
